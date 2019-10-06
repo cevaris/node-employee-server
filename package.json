@@ -4,11 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "postinstall": "npm run tsc",
+    "postinstall": "./node_modules/.bin/tsc",
     "start": "npm run serve",
-    "serve": "node dist/index.js",
-    "watch-node": "nodemon dist/index.js",
-    "watch-ts": "tsc -w"
+    "serve": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
