@@ -20,11 +20,22 @@ class InMemoryEmployeeDB {
         return store;
     }
 
-    insert(employee: Employee): Employee {
+    push(employee: Employee): Employee {
         employee.id = nextId()
         store.push(employee);
 
         return employee;
+    }
+
+    delete(id: number): Employee | undefined {
+        const indexOfEmployee = store.findIndex(e => e.id == id);
+        if (indexOfEmployee > 0) {
+            const deletedEmployee = this.get(id);
+            store.splice(indexOfEmployee, 1);
+            return deletedEmployee;
+        } else {
+            return undefined;
+        }
     }
 }
 
