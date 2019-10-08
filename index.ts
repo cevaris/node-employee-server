@@ -26,9 +26,7 @@ app.post('/employees/create', function (req, res) {
 });
 
 app.get('/employees/:id', function (req, res) {
-    console.log(req.params);
     const index = parseInt(req.params.id);
-    console.log(index);
     if (isNumber(index) && index < store.length) {
         res.json(store[index]);
     } else {
