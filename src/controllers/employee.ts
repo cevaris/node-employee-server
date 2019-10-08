@@ -15,7 +15,7 @@ module.exports = (app: express.Express) => {
     app.get('/employees/:id', function (req, res) {
         const id = parseInt(req.params.id);
         if (isNaN(id)) {
-            badRequest(res, `id '${id}' is not a number`);
+            badRequest(res, `id '${req.params.id}' is not a number`);
             return;
         }
 
