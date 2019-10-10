@@ -89,16 +89,16 @@ curl "https://node-employee-server.herokuapp.com/api/employees/7ba9cb85-542b-4dc
 #### Delete a specific Employee
 **Request**
 ```
-curl -X "DELETE" "https://node-employee-server.herokuapp.com/api/employees/e8042743-51ad-4632-b153-0ce5f7aa0049"
+curl -X "DELETE" "https://node-employee-server.herokuapp.com/api/employees/7ba9cb85-542b-4dc4-a327-df8451c3e0d4"
 ```
 **Response**
 ```
 {
   "status": "ok",
   "results": {
-    "name": "Larry Mothers",
+    "name": "Larry Powers",
     "salary": "123",
-    "id": e8042743-51ad-4632-b153-0ce5f7aa0049
+    "id": 7ba9cb85-542b-4dc4-a327-df8451c3e0d4
   }
 }
 ```
