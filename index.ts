@@ -1,7 +1,10 @@
 import express, { response } from 'express';
 
 var app = express();
-app.use(express.json());
+app.use(
+    // parse all requests regardless of content-type
+    express.json({ type: "*/*" })
+);
 
 // Import routes defined elsewhere
 require('./src/controllers/root')(app);

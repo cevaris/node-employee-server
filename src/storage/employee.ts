@@ -1,4 +1,5 @@
 import { Employee } from '../models/employee';
+import uuidv4 from 'uuid/v4';
 
 /**
  * Global in memory storage
@@ -6,7 +7,7 @@ import { Employee } from '../models/employee';
 const store: Employee[] = new Array();
 
 class InMemoryEmployeeDB {
-    get(id: number): Employee {
+    get(id: string): Employee {
         const employee = store.find(e => e.id == id);
 
         if (employee) {
@@ -27,7 +28,7 @@ class InMemoryEmployeeDB {
         return employee;
     }
 
-    delete(id: number): Employee | undefined {
+    delete(id: string): Employee | undefined {
         const indexOfEmployee = store.findIndex(e => e.id == id);
         if (indexOfEmployee > 0) {
             const deletedEmployee = this.get(id);
@@ -39,14 +40,8 @@ class InMemoryEmployeeDB {
     }
 }
 
-/**
- * Generates next id number.
- * Guarantees uniqueness, or no other employee has the same id.
- */
-let prevId = 999;
-function nextId(): number {
-    prevId = ++prevId;
-    return prevId;
+function nextId(): string {
+    return uuidv4();
 }
 
 /**
