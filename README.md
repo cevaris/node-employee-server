@@ -27,9 +27,8 @@ Find the domain the server is currently deployed to in Heroku
 #### Create new Employee
 **Request**
 ```
-curl -X "POST" "https://node-employee-server.herokuapp.com/employees/create" \
-     -H 'Content-Type: application/json; charset=utf-8' \
-     -d $'{
+curl -X "POST" "https://node-employee-server.herokuapp.com/api/employees" \
+-d $'{
   "name": "Larry Powers",
   "salary": "123"
 }'
@@ -37,11 +36,11 @@ curl -X "POST" "https://node-employee-server.herokuapp.com/employees/create" \
 **Response**
 ```
 {
-  "status": "ok",
+  "success": true,
   "results": {
-    "name": "other",
+    "name": "Larry Powers",
     "salary": "123",
-    "id": 1002
+    "id": "7ba9cb85-542b-4dc4-a327-df8451c3e0d4"
   }
 }
 ```
@@ -49,23 +48,22 @@ curl -X "POST" "https://node-employee-server.herokuapp.com/employees/create" \
 #### List all Employees
 **Request**
 ```
-curl "https://node-employee-server.herokuapp.com/employees" \
-     -H 'Content-Type: application/json; charset=utf-8'
+curl "https://node-employee-server.herokuapp.com/api/employees"
 ```
 **Response**
 ```
 {
-  "status": "ok",
+  "success": true,
   "results": [
-    {
-      "name": "Mr Lobo",
-      "salary": "123",
-      "id": 1000
-    },
     {
       "name": "Larry Powers",
       "salary": "123",
-      "id": 1001
+      "id": "7ba9cb85-542b-4dc4-a327-df8451c3e0d4"
+    },
+    {
+      "name": "Austin Loki",
+      "salary": "133",
+      "id": "38e776f8-8134-4480-bb37-b862951c51a8"
     }
   ]
 }
@@ -74,17 +72,16 @@ curl "https://node-employee-server.herokuapp.com/employees" \
 #### Get a specific Employee
 **Request**
 ```
-curl "https://node-employee-server.herokuapp.com/employees/1001" \
-     -H 'Content-Type: application/json; charset=utf-8'
+curl "https://node-employee-server.herokuapp.com/api/employees/7ba9cb85-542b-4dc4-a327-df8451c3e0d4"
 ```
 **Response**
 ```
 {
-  "status": "ok",
+  "success": true,
   "results": {
     "name": "Larry Powers",
     "salary": "123",
-    "id": 1001
+    "id": "7ba9cb85-542b-4dc4-a327-df8451c3e0d4"
   }
 }
 ```
@@ -93,7 +90,6 @@ curl "https://node-employee-server.herokuapp.com/employees/1001" \
 **Request**
 ```
 curl -X "POST" "https://node-employee-server.herokuapp.com/employees/delete/1001" \
-     -H 'Content-Type: application/json; charset=utf-8'
 ```
 **Response**
 ```

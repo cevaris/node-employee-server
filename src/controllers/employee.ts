@@ -13,8 +13,12 @@ module.exports = (app: express.Express) => {
     });
 
     app.delete('/api/employees/:id', function (req, res) {
-        const deletedEmployee = employeeDB.delete(req.params.id);
-        success(res, deletedEmployee);
+        try {
+            const deletedEmployee = employeeDB.delete(req.params.id);
+            success(res, deletedEmployee);
+        } catch (e) {
+            notFound(res, e.message);
+        }
     });
 
     app.get('/api/employees/:id', function (req, res) {

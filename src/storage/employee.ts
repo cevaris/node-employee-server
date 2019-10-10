@@ -28,14 +28,14 @@ class InMemoryEmployeeDB {
         return employee;
     }
 
-    delete(id: string): Employee | undefined {
+    delete(id: string): Employee {
         const indexOfEmployee = store.findIndex(e => e.id == id);
-        if (indexOfEmployee > 0) {
-            const deletedEmployee = this.get(id);
-            store.splice(indexOfEmployee, 1);
+        if (indexOfEmployee >= 0) {
+            const deletedEmployee = store[indexOfEmployee];
+            store.splice(indexOfEmployee, 1); // removes employee from array
             return deletedEmployee;
         } else {
-            return undefined;
+            throw new Error(`employee id=${id} not found`);
         }
     }
 }
